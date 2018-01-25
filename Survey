@@ -1,0 +1,294 @@
+Survey
+
+package surveyconductor;
+
+import java.util.Scanner;
+
+
+public class Survey {
+  
+    
+static int respondentID;
+    private String surveyTitle;
+    int answerArray[][] = new int[3][3];
+    String questionArray[] = new String [3];
+    int questionNumber;
+    int responseValue;
+    String question;
+    
+    
+    Scanner scan = new Scanner(System.in);
+    
+    Scanner in = new Scanner(System.in);
+    
+public Survey ( ) {
+/*this is the overloaded constructor. */
+	
+	
+//this("Customer Survey: ");
+ 
+
+ 
+
+}  //end constructor 1
+
+
+
+
+
+public Survey (String surveyTitle) {
+
+this.surveyTitle = surveyTitle;
+respondentID = 0;
+
+System.out.println("The survey title is: " + surveyTitle); //first output
+
+}//end constructor 2
+
+
+
+
+
+int generateRespondentID( ) {
+
+++respondentID;//increment first then return
+return respondentID;   
+    
+
+}//end genRID method
+
+
+
+
+    
+public void displaySurveyResults ( ){
+   //will need an int parameter, and grid that holds the result. Add a for loop 
+    
+   
+    
+    for (int i = 0; i < 3; i++) {
+        
+        for (int j = 0; j < 3; j++) { 
+                    
+                System.out.print(answerArray[i][j] + " ");
+                   
+                    
+                }//end inner for
+                    
+        System.out.println();
+                    
+}//end outer for
+
+
+} //end displaySurvey Results 
+
+
+
+
+public void displayQuestionStats (int questionNumber){
+/*takes the questionNumber and displays responses entered in a table form. 
+  will require loop and array*/  
+    
+  
+    for(int respondentID = 0; respondentID < 3; respondentID++){
+         
+            
+        System.out.print(answerArray[respondentID][questionNumber] + "  ");
+        
+
+    }//end outer for
+
+}//end displayQuestionStats method
+
+
+
+
+
+public void enterQuestions ( ){
+/* this method is for the user to enter the 3 questions. Will need question array
+    to store them and single loop*/
+	
+	
+	
+	for (int i = 0; i < 3; i++) {
+	
+	System.out.println("Please enter Question " + ++questionNumber);
+	String question = scan.next();
+	
+	System.out.println("Thank you, your question was  " + question);
+	
+	System.out.println();//blank line
+	
+	}
+	
+	//responseValue = answerArray[respondentID][questionNumber];
+   
+        
+
+
+	
+        
+}//end enterQuestions method
+
+
+
+
+
+
+//log response method with 3 parameters
+public void logResponse (int respondentID, int questionNumber, int responseValue ) {
+/*this method will have a grid/array for the respondentID and the questionNumber, 
+    and a loop*/
+
+    //answerArray[respondentID][questionNumber] = responseValue;
+
+    /*
+    response value is 1 to 5
+    */
+    
+}//end log response
+
+
+
+
+public void topRatedQuestion () {
+    
+    int highestTotal = 0;
+    int total;
+    int highestQuestNumber = 0;
+
+    for (int respondentID = 0; respondentID < 3; respondentID++){
+            total = 0;
+        for (int questionNumber = 0; questionNumber < 3; questionNumber++) {
+                total += answerArray[respondentID][questionNumber];
+                
+                System.err.println("total = " + total);
+                System.err.println("highest = " + highestTotal);
+        }//end inner for
+        
+           /*add answers to total, compare total to highestTotal. if total > highestTotal
+    replace highestTotal with total*/
+        
+    if (total > highestTotal) {
+            System.err.println("total = " + total + "highest = " + highestTotal);
+            highestTotal = total;
+            highestQuestNumber = respondentID;
+            
+        }//end if
+             
+    }//end outer for
+    
+    System.out.println("The highest question number is: " + (highestQuestNumber+1));
+   
+ 
+}//end top rated
+
+
+
+
+        
+public void lowRatedQuestion() {
+
+    int lowestTotal = 0;
+    int total;
+    int lowestQuestNumber = 0;
+
+    for (int respondentID = 0; respondentID < 3; respondentID++){
+            total = 0;
+        for (int questionNumber = 0; questionNumber < 3; questionNumber++) {
+                total += answerArray[respondentID][questionNumber];
+                
+                System.err.println("total = " + total);
+                System.err.println("lowest = " + lowestTotal);
+        }//end inner for
+        
+           /*add answers to total, compare total to lowestTotal. if total > lowestTotal
+    replace lowestTotal with total*/
+        
+    if (total < lowestTotal) {
+            System.err.println("total = " + total + "lowest = " + lowestTotal);
+            lowestTotal = total;
+            lowestQuestNumber = respondentID;
+            
+        }//end if
+             
+    }//end outer for
+    
+    System.out.println("The lowest question number is: " + (lowestQuestNumber+1));
+    
+     displayQuestionStats(lowestQuestNumber);
+    
+}  //end low rated      
+
+
+
+
+
+        
+public void presentQuestion (int questionNumber) {
+	
+	
+	
+	
+	
+	/*System.out.println("Please enter a value from 1 to 5 for the following question: ");
+	
+	for (int i = 0; i < 3; i++) {
+	
+	System.out.println("\n Hello Respondent " + " How would you rate question " + questionNumber++);
+		responseValue = scan.nextInt();*/
+		
+
+		
+	//}
+	
+
+	//logResponse(respondentID, questionNumber,scan.nextInt());
+	
+	//System.out.println(questionArray[questionNumber]);
+	
+
+	
+
+    
+  
+}
+
+
+
+
+
+
+public void presentQuestion(int questionNumber, int respondentID) {
+
+    
+	
+	
+	respondentID = 1;
+	
+	System.out.println("Please enter a value from 1 to 5 for the following question: ");
+	
+	for (int i = 0; i < 3; i++) {
+	
+	System.out.println("\n Hello Respondent " + respondentID + " How would you rate Question 1? " );
+		responseValue = scan.nextInt();
+		
+		System.out.println("Question 2? ");
+		responseValue = scan.nextInt();
+		
+		System.out.println("Question 3? ");
+		responseValue = scan.nextInt();
+		
+		respondentID++;
+		}
+	
+	//when I include this statement, the rest of the survey stops working, unless I enter another number, then I get an error
+	//logResponse(respondentID, questionNumber,scan.nextInt());	
+
+
+}	
+	
+	
+   
+	
+}
