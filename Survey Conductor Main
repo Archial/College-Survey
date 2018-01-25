@@ -1,0 +1,116 @@
+Survey Conductor Main
+
+package surveyconductor;
+
+
+import java.math.*;
+import java.util.Scanner;
+
+public class SurveyConductor {
+
+    static int response; 
+    static int questionNumber; 
+    static int respondentID;
+    static String answer;
+    static String title;
+    static int responseValue;
+    
+    
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        Scanner in = new Scanner(System.in);
+        
+        System.out.println("Hello! Welcome to the Survey Program! ");
+        System.out.println("Would you like to enter a name for your Survey? Please press y for Yes or n for No");
+        
+        answer = in.next();//unsure if I can use scan if it must be in.next like in the phase 5 example
+        
+    if (answer.equalsIgnoreCase("y")){
+        
+        System.out.println("Please enter the name of your Survey: ");
+        title = in.next();
+        
+        System.out.println("Thank you! Your Survey name is: " + title);
+        System.out.println();//blank line
+        
+        
+    } else {
+    
+    Survey surveyConductor = new Survey ("Default Survey");
+    
+    
+    }//end else
+    
+     Survey surveyConductor = new Survey ( );    
+     
+     //enter questions object
+     
+     surveyConductor.enterQuestions();
+     
+     
+     //log response object. Method still having issues
+     
+     surveyConductor.logResponse(respondentID, questionNumber, response);
+     
+     //generate respondent ID
+     
+     //present questions object
+     
+     surveyConductor.presentQuestion(questionNumber);
+     
+                  /*for (int i = 0; i < 3; i++) {
+             
+             System.out.println("Welcome Respondent ID: " + overloadedSurvey.generateRespondentID()
+            		 
+            		 + "\n Using a scale of 1 to 5, please leave a rating" );
+            		 
+            		 System.out.println("Question 1:  ");
+             			responseValue = in.nextInt();
+             			
+             		System.out.println("Question 2: ");	
+             			responseValue = in.nextInt();
+             			
+             		System.out.println("Question 3: ");
+             			responseValue = in.nextInt();
+             			
+             			
+             }*/
+             		
+             //end for
+             
+         surveyConductor.presentQuestion(questionNumber, response);    
+         
+         //end the survey then show the results
+    System.out.println("Thank you for completing the Survey " + title);
+     
+     //display survey results
+        surveyConductor.displaySurveyResults();
+        
+    System.out.println("The results of Survey " + title + " are: ");
+        
+        for (respondentID = 0; respondentID < 3; respondentID++) {
+        
+        for (int qNumber = 0; qNumber < 3; qNumber++){
+        
+            response = 1 + (int)(Math.random()*5);
+        
+            }//end nested loop
+        
+        }//end for loop
+    
+    //top rated question
+    
+    surveyConductor.topRatedQuestion();
+    
+    //overloadedSurvey.displayQuestionStats(questionNumber);
+    
+    //low rated question object
+    
+    surveyConductor.lowRatedQuestion();
+    //overloadedSurvey.displayQuestionStats(questionNumber);
+    
+    
+    //surveyConductor.di
+    }//end main
+    
+}
