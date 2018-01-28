@@ -23,7 +23,7 @@ public class SurveyConductor {
         System.out.println("Hello! Welcome to the Survey Program! ");
         System.out.println("Would you like to enter a name for your Survey? Please press y for Yes or n for No");
         
-        answer = in.next();//unsure if I can use scan if it must be in.next like in the phase 5 example
+        answer = in.next();
         
     if (answer.equalsIgnoreCase("y")){
         
